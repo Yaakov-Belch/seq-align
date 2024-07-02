@@ -64,7 +64,8 @@ static void alignment_fill_matrices(aligner_t *aligner, char is_sw)
 
       // Think carefully about which way round these are
       gap_a_scores[i] = min;
-      gap_b_scores[i] = scoring->no_start_gap_penalty ? 0
+      gap_b_scores[i] = (scoring->no_start_gap_penalty || scoring->no_start_gap_penalty_b)
+                        ? 0
                         : scoring->gap_open + (int)i * scoring->gap_extend;
     }
 
@@ -74,7 +75,8 @@ static void alignment_fill_matrices(aligner_t *aligner, char is_sw)
       match_scores[index] = min;
 
       // Think carefully about which way round these are
-      gap_a_scores[index] = scoring->no_start_gap_penalty ? 0
+      gap_a_scores[index] = (scoring->no_start_gap_penalty || scoring->no_start_gap_penalty_a)
+                            ? 0
                             : scoring->gap_open + (int)j * scoring->gap_extend;
       gap_b_scores[index] = min;
     }
@@ -119,7 +121,7 @@ static void alignment_fill_matrices(aligner_t *aligner, char is_sw)
       // (adding as ints would cause an integer overflow)
 
       // Update gap_a_scores[i][j] from position [i][j-1]
-      if(seq_i == len_i-1 && scoring->no_end_gap_penalty)
+      if(seq_i == len_i-1 && (scoring->no_end_gap_penalty || scoring->no_end_gap_penalty_a))
       {
         gap_a_scores[index] = MAX3(match_scores[index_up],
                                    gap_a_scores[index_up],
@@ -137,7 +139,7 @@ static void alignment_fill_matrices(aligner_t *aligner, char is_sw)
         gap_a_scores[index] = min;
 
       // Update gap_b_scores[i][j] from position [i-1][j]
-      if(seq_j == len_j-1 && scoring->no_end_gap_penalty)
+      if(seq_j == len_j-1 && (scoring->no_end_gap_penalty || scoring->no_end_gap_penalty_b))
       {
         gap_b_scores[index] = MAX3(match_scores[index_left],
                                    gap_a_scores[index_left],
@@ -262,12 +264,16 @@ void alignment_reverse_move(enum Matrix *curr_matrix, score_t *curr_score,
   gap_a_extend_penalty = gap_b_extend_penalty = scoring->gap_extend;
 
   // Free gaps at the ends
-  if(scoring->no_end_gap_penalty) {
+  if(scoring->no_end_gap_penalty  || scoring->no_end_gap_penalty_a) {
     if(*score_x == len_i) gap_a_open_penalty = gap_a_extend_penalty = 0;
+  }
+  if(scoring->no_end_gap_penalty || scoring->no_end_gap_penalty_b) {
     if(*score_y == len_j) gap_b_open_penalty = gap_b_extend_penalty = 0;
   }
-  if(scoring->no_start_gap_penalty) {
+  if(scoring->no_start_gap_penalty || scoring->no_start_gap_penalty_a) {
     if(*score_x == 0) gap_a_open_penalty = gap_a_extend_penalty = 0;
+  }
+  if(scoring->no_start_gap_penalty || scoring->no_start_gap_penalty_b) {
     if(*score_y == 0) gap_b_open_penalty = gap_b_extend_penalty = 0;
   }
 

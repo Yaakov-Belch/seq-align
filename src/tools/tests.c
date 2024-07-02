@@ -75,13 +75,23 @@ void nw_test_no_gaps_in_longer()
   int gap_open = -4;
   int gap_extend = -1;
 
-  bool no_start_gap_penalty = false, no_end_gap_penalty = false;
+  bool no_start_gap_penalty = false;
+  bool no_start_gap_penalty_a = false;
+  bool no_start_gap_penalty_b = false;
+  bool no_end_gap_penalty = false;
+  bool no_end_gap_penalty_a = false;
+  bool no_end_gap_penalty_b = false;
   bool no_gaps_in_a = true, no_gaps_in_b = false;
   bool no_mismatches = false, case_sensitive = true;
 
   scoring_t scoring;
   scoring_init(&scoring, match, mismatch, gap_open, gap_extend,
-               no_start_gap_penalty, no_end_gap_penalty,
+               no_start_gap_penalty,
+               no_start_gap_penalty_a,
+               no_start_gap_penalty_b,
+               no_end_gap_penalty,
+               no_end_gap_penalty_a,
+               no_end_gap_penalty_b,
                no_gaps_in_a, no_gaps_in_b,
                no_mismatches, case_sensitive);
 
@@ -112,13 +122,23 @@ void nw_test_free_gaps_at_ends()
   int gap_open = -4;
   int gap_extend = -1;
 
-  bool no_start_gap_penalty = true, no_end_gap_penalty = true;
+  bool no_start_gap_penalty = true;
+  bool no_start_gap_penalty_a = true;
+  bool no_start_gap_penalty_b = true;
+  bool no_end_gap_penalty = true;
+  bool no_end_gap_penalty_a = true;
+  bool no_end_gap_penalty_b = true;
   bool no_gaps_in_a = false, no_gaps_in_b = false;
   bool no_mismatches = false, case_sensitive = true;
 
   scoring_t scoring;
   scoring_init(&scoring, match, mismatch, gap_open, gap_extend,
-               no_start_gap_penalty, no_end_gap_penalty,
+               no_start_gap_penalty,
+               no_start_gap_penalty_a,
+               no_start_gap_penalty_b,
+               no_end_gap_penalty,
+               no_end_gap_penalty_a,
+               no_end_gap_penalty_b,
                no_gaps_in_a, no_gaps_in_b,
                no_mismatches, case_sensitive);
 
@@ -140,13 +160,23 @@ void nw_test_no_mismatches()
   int gap_open = -4;
   int gap_extend = -1;
 
-  bool no_start_gap_penalty = false, no_end_gap_penalty = false;
+  bool no_start_gap_penalty = false;
+  bool no_start_gap_penalty_a = false;
+  bool no_start_gap_penalty_b = false;
+  bool no_end_gap_penalty = false;
+  bool no_end_gap_penalty_a = false;
+  bool no_end_gap_penalty_b = false;
   bool no_gaps_in_a = false, no_gaps_in_b = false;
   bool no_mismatches = true, case_sensitive = true;
 
   scoring_t scoring;
   scoring_init(&scoring, match, mismatch, gap_open, gap_extend,
-               no_start_gap_penalty, no_end_gap_penalty,
+               no_start_gap_penalty,
+               no_start_gap_penalty_a,
+               no_start_gap_penalty_b,
+               no_end_gap_penalty,
+               no_end_gap_penalty_a,
+               no_end_gap_penalty_b,
                no_gaps_in_a, no_gaps_in_b,
                no_mismatches, case_sensitive);
 
@@ -183,13 +213,23 @@ void nw_test_no_mismatches_rand()
   int gap_open = -4;
   int gap_extend = -1;
 
-  bool no_start_gap_penalty = false, no_end_gap_penalty = false;
+  bool no_start_gap_penalty = false;
+  bool no_start_gap_penalty_a = false;
+  bool no_start_gap_penalty_b = false;
+  bool no_end_gap_penalty = false;
+  bool no_end_gap_penalty_a = false;
+  bool no_end_gap_penalty_b = false;
   bool no_gaps_in_a = false, no_gaps_in_b = false;
   bool no_mismatches = true, case_sensitive = true;
 
   scoring_t scoring;
   scoring_init(&scoring, match, mismatch, gap_open, gap_extend,
-               no_start_gap_penalty, no_end_gap_penalty,
+               no_start_gap_penalty,
+               no_start_gap_penalty_a,
+               no_start_gap_penalty_b,
+               no_end_gap_penalty,
+               no_end_gap_penalty_a,
+               no_end_gap_penalty_b,
                no_gaps_in_a, no_gaps_in_b,
                no_mismatches, case_sensitive);
 
@@ -243,13 +283,23 @@ void sw_test_no_gaps_smith_waterman()
   int gap_open = -4;
   int gap_extend = -1;
 
-  bool no_start_gap_penalty = false, no_end_gap_penalty = false;
+  bool no_start_gap_penalty = false;
+  bool no_start_gap_penalty_a = false;
+  bool no_start_gap_penalty_b = false;
+  bool no_end_gap_penalty = false;
+  bool no_end_gap_penalty_a = false;
+  bool no_end_gap_penalty_b = false;
   bool no_gaps_in_a = true, no_gaps_in_b = true;
   bool no_mismatches = false, case_sensitive = true;
 
   scoring_t scoring;
   scoring_init(&scoring, match, mismatch, gap_open, gap_extend,
-               no_start_gap_penalty, no_end_gap_penalty,
+               no_start_gap_penalty,
+               no_start_gap_penalty_a,
+               no_start_gap_penalty_b,
+               no_end_gap_penalty,
+               no_end_gap_penalty_a,
+               no_end_gap_penalty_b,
                no_gaps_in_a, no_gaps_in_b,
                no_mismatches, case_sensitive);
 

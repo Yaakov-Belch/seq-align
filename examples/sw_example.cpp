@@ -24,12 +24,13 @@ int main(int argc, char* argv[])
   int match = 1, mismatch = -1, gap_open = -4, gap_extend = -1;
 
   bool no_start_gap_penalty = false, no_end_gap_penalty = false;
+  // no_start_gap_penalty_{a,b} and no_end_gap_penalty_{a,b} not exposed.
   bool no_gaps_in_a = true, no_gaps_in_b = true;
   bool no_mismatches = true, case_sensitive = true;
 
   scoring_t scoring;
   scoring_init(&scoring, match, mismatch, gap_open, gap_extend,
-               no_start_gap_penalty, no_end_gap_penalty,
+               no_start_gap_penalty, 0, 0, no_end_gap_penalty, 0, 0,
                no_gaps_in_a, no_gaps_in_b,
                no_mismatches, case_sensitive);
 

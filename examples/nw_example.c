@@ -27,12 +27,12 @@ void align(char* seq_a, char* seq_b)
   // Don't penalise gaps at the start
   // ACGATTT
   // ----TTT would score +3 (when match=+1)
-  char no_start_gap_penalty = 1;
+  char no_start_gap_penalty = 1; // no_start_gap_penalty_a, no_start_gap_penalty_b not shown.
   
   // ..or gaps at the end e.g.
   // ACGATTT
   // ACGA--- would score +4 (when match=+1)
-  char no_end_gap_penalty = 1;
+  char no_end_gap_penalty = 1; // no_end_gap_penalty_a, no_end_gap_penalty_b not shown.
 
   char no_gaps_in_a = 0, no_gaps_in_b = 0;
   char no_mismatches = 0;
@@ -42,7 +42,7 @@ void align(char* seq_a, char* seq_b)
 
   scoring_t scoring;
   scoring_init(&scoring, match, mismatch, gap_open, gap_extend,
-               no_start_gap_penalty, no_end_gap_penalty,
+               no_start_gap_penalty, 0, 0, no_end_gap_penalty, 0, 0,
                no_gaps_in_a, no_gaps_in_b, no_mismatches, case_sensitive);
 
   // Add some special cases
