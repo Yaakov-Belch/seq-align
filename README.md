@@ -8,6 +8,18 @@ updated: 18 Aug 2015
 
 [![Build Status](https://travis-ci.org/noporpoise/seq-align.png?branch=master)](https://travis-ci.org/noporpoise/seq-align)
 
+Fork by Yaakov Belch
+====================
+I expanded `no_start_gap_penalty` and `no_end_gap_penalty` to:
+`no_start_gap_penalty`, `no_start_gap_penalty_a`, `no_start_gap_penalty_b`,
+`no_end_gap_penalty`,   `no_end_gap_penalty_a`,   `no_end_gap_penalty_b`.
+
+The feature `no_start_gap_penalty_a` seems not to work, but `no_start_gap_penalty_b` works.
+The code is 100% symmetric for all these cases, but investigate `seq-align/src/alignment.c`
+where the comments say: `// Think carefully about which way round these are`
+
+The algorithm may not be symmetric.
+
 About
 =====
 

@@ -22,7 +22,8 @@ typedef struct
 
   // Needleman Wunsch only
   // Turn these on to turn off penalties for gaps at the start/end of alignment
-  bool no_start_gap_penalty, no_end_gap_penalty;
+  bool no_start_gap_penalty, no_start_gap_penalty_a, no_start_gap_penalty_b;
+  bool no_end_gap_penalty,   no_end_gap_penalty_a,   no_end_gap_penalty_b;
 
   // Turn at most one of these on at a time to prevent gaps/mismatches
   bool no_gaps_in_a, no_gaps_in_b, no_mismatches;
@@ -57,7 +58,12 @@ extern "C" {
 
 void scoring_init(scoring_t* scoring, int match, int mismatch,
                   int gap_open, int gap_extend,
-                  bool no_start_gap_penalty, bool no_end_gap_penalty,
+                  bool no_start_gap_penalty,
+                  bool no_start_gap_penalty_a,
+                  bool no_start_gap_penalty_b,
+                  bool no_end_gap_penalty,
+                  bool no_end_gap_penalty_a,
+                  bool no_end_gap_penalty_b,
                   bool no_gaps_in_a, bool no_gaps_in_b,
                   bool no_mismatches, bool case_sensitive);
 

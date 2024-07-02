@@ -259,12 +259,14 @@ cmdline_t* cmdline_new(int argc, char **argv, scoring_t *scoring,
         if(cmd_type != SEQ_ALIGN_NW_CMD)
           usage("--freestartgap only valid with Needleman-Wunsch");
         scoring->no_start_gap_penalty = true;
+        // no_start_gap_penalty_a and no_start_gap_penalty_b not exposed in cmdline.
       }
       else if(strcasecmp(argv[argi], "--freeendgap") == 0)
       {
         if(cmd_type != SEQ_ALIGN_NW_CMD)
           usage("--freeendgap only valid with Needleman-Wunsch");
         scoring->no_end_gap_penalty = true;
+        // no_end_gap_penalty_a and no_end_gap_penalty_b not exposed in cmdline.
       }
       else if(strcasecmp(argv[argi], "--nogaps") == 0)
       {
